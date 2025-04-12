@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weight Loss Diet Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #f4f4f4;
+            --secondary: #e0e0e0;
+            --accent: #4CAF50;
+            --text-primary: #333;
+            --text-secondary: #555;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Ensure full viewport height */
+            position: relative; /* For background video positioning */
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Place behind other content */
+            filter: brightness(60%); /* Optional: Dim the video */
+        }
+
+        .content-wrapper {
+            width: 100%;
+            max-width: 800px;
+            z-index: 1; /* Place content above the video */
+        }
+
+        h1 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .option-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .option-buttons button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .option-buttons button.veg {
+            background-color: #8BC34A;
+            color: white;
+        }
+
+        .option-buttons button.non-veg {
+            background-color: #FF9800;
+            color: white;
+        }
+
+        .option-buttons button:hover {
+            opacity: 0.8;
+        }
+
+        .diet-plan-section {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .notes {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .common-tips {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .common-tips h2 {
+            color: var(--accent);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .common-tips ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .common-tips li {
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="C:\Users\Lenovo\OneDrive\Desktop\projects\FitPRo platform\video\8616858-hd_1920_1080_25fps.mp4"video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="content-wrapper">
+        <h1>Weight Loss Diet Plan</h1>
+
+        <div class="option-buttons">
+            <button class="veg" onclick="showVegPlan()">Vegetarian</button>
+            <button class="non-veg" onclick="showNonVegPlan()">Non-Vegetarian</button>
+        </div>
+
+        <div id="vegPlan" class="diet-plan-section hidden">
+            <h2><span style="font-size: 1.2em;">🥦</span> VEGETARIAN WEIGHT LOSS DIET PLAN</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meal</th>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Breakfast</td>
+                        <td>Rolled oats + skim milk + chia seeds + almonds</td>
+                        <td>1/3 cup oats + 1 cup milk + 1 tbsp chia + 6 almonds</td>
+                        <td class="notes">Soak oats overnight or cook fresh</td>
+                    </tr>
+                    <tr>
+                        <td>Breakfast</td>
+                        <td>Boiled moong sprouts</td>
+                        <td>1/2 cup</td>
+                        <td class="notes">With lemon & black salt</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-Morning Snack</td>
+                        <td>Greek yogurt (plain)</td>
+                        <td>1 cup</td>
+                        <td class="notes">High protein</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-Morning Snack</td>
+                        <td>Apple / Pear</td>
+                        <td>1</td>
+                        <td class="notes">Low GI fruit</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>Paneer (grilled or dry sabzi)</td>
+                        <td>100g</td>
+                        <td class="notes">Cottage cheese</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>Multigrain roti / Brown rice</td>
+                        <td>1 roti OR 1/2 cup rice</td>
+                        <td class="notes">Low GI carbs</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>Mixed salad (lettuce, cucumber, carrots)</td>
+                        <td>1 bowl</td>
+                        <td class="notes">Lemon/olive oil dressing</td>
+                    </tr>
+                    <tr>
+                        <td>Evening Snack</td>
+                        <td>Green tea + roasted chana / makhana</td>
+                        <td>1 cup</td>
+                        <td class="notes">Light + fiber-rich</td>
+                    </tr>
+                    <tr>
+                        <td>Dinner</td>
+                        <td>Vegetable stir-fry (broccoli, bell peppers, tofu)</td>
+                        <td>1–1.5 cups</td>
+                        <td class="notes">Sautéed in olive oil</td>
+                    </tr>
+                    <tr>
+                        <td>Dinner</td>
+                        <td>Quinoa / Millet</td>
+                        <td>1/2 cup</td>
+                        <td class="notes">Or skip if less active</td>
+                    </tr>
+                    <tr>
+                        <td>Optional Late Snack</td>
+                        <td>Low-fat milk or warm turmeric milk</td>
+                        <td>1/2 cup</td>
+                        <td class="notes">Optional</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="nonVegPlan" class="diet-plan-section hidden">
+            <h2><span style="font-size: 1.2em;">🍗</span> NON-VEG WEIGHT LOSS DIET PLAN</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meal</th>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Breakfast</td>
+                        <td>Boiled eggs (whole + whites)</td>
+                        <td>2 whole + 2 whites</td>
+                        <td class="notes">Scrambled or boiled</td>
+                    </tr>
+                    <tr>
+                        <td>Breakfast</td>
+                        <td>Multigrain toast</td>
+                        <td>1 slice</td>
+                        <td class="notes">Add avocado or tomato</td>
+                    </tr>
+                    <tr>
+                        <td>Breakfast</td>
+                        <td>Green tea / black coffee</td>
+                        <td>1 cup</td>
+                        <td class="notes">No sugar</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-Morning Snack</td>
+                        <td>Whey protein shake (with water)</td>
+                        <td>1 scoop</td>
+                        <td class="notes">Or egg white omelet</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>Grilled chicken breast / fish fillet</td>
+                        <td>120–150g</td>
+                        <td class="notes">Lightly seasoned</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>Brown rice / quinoa</td>
+                        <td>1/2 cup cooked</td>
+                        <td class="notes">Complex carbs</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>Veggies (boiled/sautéed)</td>
+                        <td>1–1.5 cups</td>
+                        <td class="notes">High fiber</td>
+                    </tr>
+                    <tr>
+                        <td>Evening Snack</td>
+                        <td>Boiled egg / Chicken soup</td>
+                        <td>1 serving</td>
+                        <td class="notes">Light protein option</td>
+                    </tr>
+                    <tr>
+                        <td>Evening Snack</td>
+                        <td>Roasted peanuts / almonds</td>
+                        <td>8–10 pcs</td>
+                        <td class="notes">Optional</td>
+                    </tr>
+                    <tr>
+                        <td>Dinner</td>
+                        <td>Grilled fish / chicken tikka (dry)</td>
+                        <td>100–150g</td>
+                        <td class="notes">No creamy sauces</td>
+                    </tr>
+                    <tr>
+                        <td>Dinner</td>
+                        <td>Steamed or sautéed veggies</td>
+                        <td>1 cup</td>
+                        <td class="notes">Add lemon or herbs</td>
+                    </tr>
+                    <tr>
+                        <td>Optional Late Snack</td>
+                        <td>Greek yogurt or warm herbal tea</td>
+                        <td>1/2 cup</td>
+                        <td class="notes">Light digestion support</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="common-tips">
+            <h2><span style="font-size: 1.2em;">✅</span> Common Tips for Both Plans:</h2>
+            <ul>
+                <li>Drink 3–4L water daily</li>
+                <li>Avoid added sugar, junk, and processed oils</li>
+                <li>Include 30–45 minutes of physical activity</li>
+                <li>Sleep 7–8 hours consistently</li>
+                <li>Focus on portion control</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const vegPlan = document.getElementById('vegPlan');
+        const nonVegPlan = document.getElementById('nonVegPlan');
+
+        function showVegPlan() {
+            vegPlan.classList.remove('hidden');
+            nonVegPlan.classList.add('hidden');
+        }
+
+        function showNonVegPlan() {
+            nonVegPlan.classList.remove('hidden');
+            vegPlan.classList.add('hidden');
+        }
+
+        // Show vegetarian plan by default
+        showVegPlan();
+    </script>
+</body>
+</html>

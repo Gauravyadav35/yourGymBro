@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shin Splints First Aid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #1e1e1e; /* Dark background */
+            --accent-start: #4285f4; /* Blue */
+            --accent-mid: #ea4335;   /* Red */
+            --accent-end: #fbbc05;   /* Yellow */
+            --text: #e0e1dd;
+            --heading-text: #f0f0f0;
+            --line-color: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(60%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(44, 44, 44, 0.8);
+            border-radius: 10px;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--heading-text);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--accent-start), var(--accent-mid), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            animation: pulseHeading 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseHeading {
+            from { transform: scale(1); }
+            to { transform: scale(1.03); }
+        }
+
+        h2 {
+            color: var(--heading-text);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--accent-start);
+            padding-bottom: 8px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.8s ease-out forwards 0.5s;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h3 {
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideInRight 0.8s ease-out forwards 0.7s;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            border-left: 3px solid var(--line-color);
+            padding-left: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1s;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--accent-mid);
+            font-weight: bold;
+        }
+
+        .image-container {
+            float: right;
+            margin: 20px 0 20px 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: zoomIn 0.7s ease-out forwards 0.4s;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+            from {
+                transform: scale(0.8);
+            }
+        }
+
+        .image-container img {
+            display: block;
+            width: 200px;
+            height: auto;
+        }
+
+        .causes-list, .symptoms-list, .treatment-list, .important-considerations {
+            margin-top: 30px;
+            border-top: 2px dashed var(--accent-end);
+            padding-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1.1s;
+        }
+
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+            animation: blinkWarning 1s linear infinite;
+        }
+
+        @keyframes blinkWarning {
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="video/muscle strain.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="Images/shin splints.jpeg" alt="Shin Splints First Aid">
+        </div>
+
+        <h1>Shin Splints (Medial Tibial Stress Syndrome - MTSS)</h1>
+
+        <p>This page provides information about shin splints, a common condition among athletes. <span class="warning">Remember, this information is for general knowledge and does not substitute professional medical advice. If you are experiencing persistent or severe shin pain, consult a healthcare professional for proper diagnosis and management, especially to rule out other conditions like stress fractures.</span></p>
+
+        <h2>Understanding Shin Splints</h2>
+        <p>Shin splints refer to pain along the inner border of the tibia (shin bone). It's a common condition among athletes, especially runners, and is often considered an overuse injury. While not a strain or sprain in the traditional sense, it involves inflammation and micro-tears in the muscles, tendons, and bone tissue around the tibia.</p>
+
+        <h2 class="causes-list">Causes of Shin Splints</h2>
+        <p>Shin splints typically develop gradually due to repetitive stress on the shinbone and the connective tissues that attach the muscles to the bone. Common contributing factors include:</p>
+        <ul>
+            <li><strong>Overpronation:</strong> Excessive inward rolling of the foot during walking or running. This puts extra stress on the muscles and tendons in the lower leg.</li>
+            <li><strong>Sudden increase in training intensity or volume:</strong> Doing too much too soon without allowing the body to adapt.</li>
+            <li><strong>Running on hard surfaces:</strong> Increases the impact on the shins.</li>
+            <li><strong>Wearing improper or worn-out footwear:</strong> Lack of support and cushioning.</li>
+            <li><strong>Weak or inflexible calf muscles:</strong> These muscles help stabilize the lower leg, and weakness or tightness can overload other tissues.</li>
+            <li><strong>Running uphill or downhill:</strong> These activities place additional stress on the shin muscles.</li>
+            <li><strong>Biomechanical issues:</strong> Leg length discrepancies, flat feet, or high arches can contribute.</li>
+        </ul>
+
+        <h2 class="symptoms-list">Symptoms of Shin Splints</h2>
+        <p>The pain associated with shin splints usually develops gradually and can range from mild to severe. Common symptoms include:</p>
+        <ul>
+            <li><strong>Pain along the inner border of the tibia (shin bone):</strong> This is the hallmark symptom. The pain can be sharp, throbbing, or dull.</li>
+            <li>Tenderness to the touch along the shin bone.</li>
+            <li>Pain that worsens during or after exercise.</li>
+            <li>Pain that may initially subside with rest but returns with activity.</li>
+            <li>Swelling in the lower leg (less common but can occur).</li>
+            <li>Numbness or weakness in the feet (rare).</li>
+        </ul>
+
+        <h2 class="treatment-list">Cure/Treatment of Shin Splints</h2>
+        <p>The primary goals of treatment are to reduce pain and inflammation, allow the tissues to heal, and address the underlying causes to prevent recurrence.</p>
+
+        <h3>Immediate Self-Care (R.I.C.E. and Modifications)</h3>
+        <ul>
+            <li><strong>Rest:</strong> Reduce or stop activities that aggravate the pain. This doesn't necessarily mean complete inactivity, but rather modifying your routine to avoid high-impact exercises. Cross-training activities like swimming or cycling may be possible if they don't cause pain.</li>
+            <li><strong>Ice:</strong> Apply ice packs wrapped in a cloth to the affected area for 15-20 minutes several times a day to reduce pain and inflammation.</li>
+            <li><strong>Compression:</strong> Wrapping the lower leg with an elastic bandage can help reduce swelling.</li>
+            <li><strong>Elevation:</strong> Elevating the leg when resting can also help reduce swelling.</li>
+            <li><strong>Pain Relief:</strong> Over-the-counter pain relievers like NSAIDs (ibuprofen, naproxen) or acetaminophen can help manage pain and inflammation.</li>
+        </ul>
+
+        <h3>Later Stage Treatment and Rehabilitation</h3>
+        <ul>
+            <li><strong>Activity Modification:</strong> Gradually reintroduce activities as pain subsides, starting with low-impact options and slowly increasing intensity and duration. Avoid activities that consistently trigger the pain.</li>
+            <li><strong>Stretching:</strong> Gentle stretching of the calf muscles (gastrocnemius and soleus) and the muscles in the front of the shin can help improve flexibility and reduce tension.</li>
+            <li><strong>Strengthening Exercises:</strong> Strengthening the calf muscles, as well as the muscles in the front of the shin (tibialis anterior), and the muscles of the foot and ankle can improve stability and support.</li>
+            <li><strong>Proper Footwear:</strong> Ensure you are wearing supportive athletic shoes that are appropriate for your activity and foot type. Replace worn-out shoes. Consider orthotic inserts if recommended by a healthcare professional, especially if you have overpronation or other biomechanical issues.</li>
+            <li><strong>Physical Therapy:</strong> A physical therapist can provide a tailored exercise program, manual therapy techniques, and guidance on proper biomechanics and training progression.</li>
+            <li><strong>Addressing Biomechanical Issues:</strong> If overpronation or other biomechanical factors are contributing, orthotic inserts or changes in running technique may be recommended.</li>
+            <li><strong>Gradual Return to Activity:</strong> Increase training intensity and volume gradually, following the "10% rule" (increasing mileage or intensity by no more than 10% per week).</li>
+        </ul>
+
+        <h2 class="important-considerations">Important Considerations</h2>
+        <ul>
+            <li><strong>Early Intervention:</strong> Addressing shin splints early can prevent them from becoming chronic and more severe.</li>
+            <li><strong>Proper Diagnosis:</strong> While self-care can be helpful for mild cases, persistent or severe pain warrants a medical evaluation to rule out other conditions like stress fractures.</li>
+            <li><strong>Prevention:</strong> Focus on proper training progression, appropriate footwear, stretching and strengthening exercises, and addressing any biomechanical issues.</li>
+            <li><strong>Listen to Your Body:</strong> Pay attention to pain signals and back off if the pain returns or worsens.</li>
+        </ul>
+
+        <p>Recovery time varies depending on the severity of the shin splints and how well the treatment plan is followed. Mild cases may improve within a few weeks, while more severe cases can take several months. The principles of rest, ice, and gradual return to activity are still important aspects of recovery.</p>
+    </div>
+</body>
+</html>

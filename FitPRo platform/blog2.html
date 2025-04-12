@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0d1b2a;
+      --secondary: #1b263b;
+      --accent: #ff7f50;
+      --text: #e0e1dd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 30px;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .card {
+      background: rgba(27, 38, 59, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      max-width: 700px;
+      width: 100%;
+      animation: slideIn 0.8s ease-out;
+      backdrop-filter: blur(8px);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.1s; }
+    .form-group:nth-child(2) { animation-delay: 0.2s; }
+    .form-group:nth-child(3) { animation-delay: 0.3s; }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 14px;
+      background: #1b2a3a;
+      color: var(--text);
+      border: 1px solid #2c3e50;
+      border-radius: 12px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      outline: none;
+    }
+
+    input[type="file"] {
+      margin-top: 8px;
+      color: var(--text);
+    }
+
+    #image-preview {
+      margin-top: 10px;
+      max-width: 100%;
+      max-height: 250px;
+      border-radius: 12px;
+      display: none;
+      border: 2px solid var(--accent);
+    }
+
+    button {
+      background-color: var(--accent);
+      color: var(--primary);
+      padding: 14px 28px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+    }
+
+    button:hover {
+      background-color: #ffa07a;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffa07a, 0 0 30px var(--accent);
+    }
+
+    .preview-section {
+      margin-top: 40px;
+      padding: 30px;
+      background-color: rgba(27, 38, 59, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 700px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+      color: var(--text);
+    }
+
+    .preview-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .preview-section h2 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .preview-section img {
+      margin-top: 15px;
+      max-width: 100%;
+      border-radius: 12px;
+      border: 2px solid var(--accent);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>✨ Share Your Fitness Journey</h1>
+
+  <div class="card">
+    <form id="blogForm">
+      <div class="form-group">
+        <label for="title">Blog Title</label>
+        <input type="text" id="title" placeholder="e.g., My Morning Routine" required />
+      </div>
+
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea id="content" rows="6" placeholder="Write your workout, tips, or journey..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Upload Image</label>
+        <input type="file" id="image" accept="image/*" />
+        <img id="image-preview" />
+      </div>
+
+      <button type="submit">Publish Blog</button>
+    </form>
+  </div>
+
+  <div class="preview-section" id="blogPreview">
+    <h2 id="preview-title"></h2>
+    <p id="preview-content"></p>
+    <img id="preview-image" />
+  </div>
+
+  <script>
+    const form = document.getElementById('blogForm');
+    const imageInput = document.getElementById('image');
+    const imagePreview = document.getElementById('image-preview');
+    const blogPreview = document.getElementById('blogPreview');
+
+    imageInput.addEventListener('change', () => {
+      const file = imageInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          imagePreview.src = e.target.result;
+          imagePreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      const imageFile = imageInput.files[0];
+
+      document.getElementById('preview-title').innerText = title;
+      document.getElementById('preview-content').innerText = content;
+
+      if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          document.getElementById('preview-image').src = e.target.result;
+          blogPreview.classList.add('show');
+        };
+        reader.readAsDataURL(imageFile);
+      } else {
+        document.getElementById('preview-image').src = '';
+        blogPreview.classList.add('show');
+      }
+
+      form.reset();
+      imagePreview.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>

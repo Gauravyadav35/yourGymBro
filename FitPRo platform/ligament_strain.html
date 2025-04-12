@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ligament Sprain First Aid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #1e1e1e; /* Dark background */
+            --accent-start: #4285f4; /* Blue */
+            --accent-mid: #ea4335;   /* Red */
+            --accent-end: #fbbc05;   /* Yellow */
+            --text: #e0e1dd;
+            --heading-text: #f0f0f0;
+            --line-color: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(60%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(44, 44, 44, 0.8);
+            border-radius: 10px;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--heading-text);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--accent-start), var(--accent-mid), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            animation: pulseHeading 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseHeading {
+            from { transform: scale(1); }
+            to { transform: scale(1.03); }
+        }
+
+        h2 {
+            color: var(--heading-text);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--accent-start);
+            padding-bottom: 8px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.8s ease-out forwards 0.5s;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h3 {
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideInRight 0.8s ease-out forwards 0.7s;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            border-left: 3px solid var(--line-color);
+            padding-left: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1s;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--accent-mid);
+            font-weight: bold;
+        }
+
+        .image-container {
+            float: right;
+            margin: 20px 0 20px 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: zoomIn 0.7s ease-out forwards 0.4s;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+            from {
+                transform: scale(0.8);
+            }
+        }
+
+        .image-container img {
+            display: block;
+            width: 200px;
+            height: auto;
+        }
+
+        .causes-list, .symptoms-list, .treatment-list, .grading-list, .important-considerations {
+            margin-top: 30px;
+            border-top: 2px dashed var(--accent-end);
+            padding-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1.1s;
+        }
+
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+            animation: blinkWarning 1s linear infinite;
+        }
+
+        @keyframes blinkWarning {
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="video/ligament strain.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="Images/ligament sprain.jpeg" alt="Ligament Sprain First Aid">
+        </div>
+
+        <h1>Ligament Sprain First Aid</h1>
+
+        <p>This page provides information about ligament sprains, their causes, symptoms, treatment, and grading. <span class="warning">Remember, this information is for general knowledge and does not substitute professional medical advice. If you suspect a ligament sprain, especially if it's moderate to severe, please consult a healthcare professional for proper diagnosis and management.</span></p>
+
+        <h2>Understanding Ligament Sprains</h2>
+        <p>A ligament sprain is an injury to a ligament, the tough band of fibrous tissue that connects two bones together in a joint. It occurs when these ligaments are stretched or torn. Sprains are graded based on the severity of the ligament damage.</p>
+
+        <h2 class="causes-list">Causes of Ligament Sprain</h2>
+        <p>Ligament sprains typically occur due to a sudden force or trauma that overstresses the joint, such as:</p>
+        <ul>
+            <li>Sudden twisting or turning movements: Common in sports like basketball, soccer, and tennis.</li>
+            <li>Awkward landings: From jumps or falls.</li>
+            <li>Direct impact to a joint: Such as a tackle in football.</li>
+            <li>Overextension of a joint.</li>
+            <li>Repetitive stress: Over time can weaken ligaments, making them more susceptible to sprains.</li>
+        </ul>
+        <p>Common areas for sprains include ankles, knees, wrists, and fingers.</p>
+
+        <h2 class="symptoms-list">Symptoms of Ligament Sprain</h2>
+        <p>Symptoms can vary depending on the severity (Grade 1, 2, or 3) but often include:</p>
+        <ul>
+            <li>Pain around the affected joint.</li>
+            <li>Swelling.</li>
+            <li>Bruising.</li>
+            <li>Limited range of motion.</li>
+            <li>Difficulty bearing weight on the joint.</li>
+            <li>A feeling of looseness or instability in the joint (especially in more severe sprains).</li>
+            <li>A "pop" or tearing sensation at the time of injury.</li>
+        </ul>
+
+        <h2 class="treatment-list">Cure/Treatment of Ligament Sprain</h2>
+        <p>Similar to muscle strains, the initial treatment focuses on reducing pain and swelling and supporting healing. The approach depends on the grade of the sprain.</p>
+
+        <h3>Immediate Self-Care (R.I.C.E.)</h3>
+        <ul>
+            <li><strong>Rest:</strong> Avoid using the injured joint. Crutches or a sling might be necessary for lower body or upper body sprains, respectively.</li>
+            <li><strong>Ice:</strong> Apply ice packs wrapped in a cloth for 15-20 minutes every 2-3 hours for the first 2-3 days.</li>
+            <li><strong>Compression:</strong> Wrap the injured area with an elastic bandage to help reduce swelling.</li>
+            <li><strong>Elevation:</strong> Keep the injured joint raised above the level of your heart whenever possible.</li>
+        </ul>
+
+        <h3>Pain Relief</h3>
+        <ul>
+            <li><strong>Over-the-counter medications:</strong> NSAIDs (ibuprofen, naproxen) or acetaminophen can help manage pain.</li>
+        </ul>
+
+        <h3>Later Stage Treatment and Rehabilitation</h3>
+        <ul>
+            <li><strong>Immobilization:</strong> Depending on the severity, a brace, splint, or cast may be needed to stabilize the joint and allow the ligament to heal.</li>
+            <li><strong>Physical therapy:</strong> Crucial for regaining range of motion, strength, and stability in the injured joint. A physical therapist will guide you through specific exercises.</li>
+            <li><strong>Stretching and strengthening exercises:</strong> Gentle exercises are introduced as pain subsides to restore function and prevent chronic instability.</li>
+            <li><strong>Surgery:</strong> In severe Grade 3 sprains (complete ligament tears), especially in certain joints like the knee, surgery may be required to repair or reconstruct the torn ligament.</li>
+        </ul>
+
+        <h2 class="grading-list">Grading of Ligament Sprains</h2>
+        <p>Sprains are often classified into three grades:</p>
+        <ul>
+            <li><strong>Grade 1 (Mild):</strong> Slight stretching and microscopic tearing of the ligament fibers. Minimal swelling and tenderness. The joint remains stable.</li>
+            <li><strong>Grade 2 (Moderate):</strong> Partial tearing of the ligament. More significant swelling, bruising, and pain. Some loss of function and mild to moderate instability of the joint.</li>
+            <li><strong>Grade 3 (Severe):</strong> Complete tear or rupture of the ligament. Significant swelling, bruising, and severe pain. The joint is unstable and unable to bear weight.</li>
+        </ul>
+
+        <h2 class="important-considerations">Important Considerations</h2>
+        <ul>
+            <li><strong>Seek medical attention:</strong> For moderate to severe sprains (Grade 2 and 3), it's important to see a doctor for proper diagnosis and a treatment plan. An X-ray may be needed to rule out a fracture. An MRI might be used to assess the extent of ligament damage.</li>
+            <li><strong>Follow the rehabilitation program:</strong> Completing the prescribed physical therapy is essential for a full recovery and to prevent long-term problems like chronic pain or instability.</li>
+            <li><strong>Gradual return to activity:</strong> Progress back to normal activities slowly and as advised by your healthcare provider or physical therapist.</li>
+            <li><strong>Prevention:</strong> Measures include using proper techniques during activities, wearing supportive footwear, ensuring adequate warm-up and cool-down, and strengthening the muscles around the joints.</li>
+        </ul>
+
+        <p>The healing time for a ligament sprain varies greatly depending on the severity and the specific ligament involved. Grade 1 sprains may take a few weeks, Grade 2 sprains can take several weeks to months, and Grade 3 sprains may require months of rehabilitation, and potentially surgery, for full recovery.</p>
+    </div>
+</body>
+</html>

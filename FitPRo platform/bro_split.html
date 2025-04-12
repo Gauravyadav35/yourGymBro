@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>FitPro | Bro Split</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #ff7f50;
+            --text: #e0e1dd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--secondary);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .workout-day {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(27, 38, 59, 0.8);
+        }
+
+        .workout-day h4 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .exercise {
+            margin-bottom: 10px;
+        }
+
+        .exercise-name {
+            font-weight: bold;
+            color: var(--text);
+        }
+
+        .sets-reps {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BRO SPLIT</h1>
+        <h2>Workout Routine - 5 Day Workout</h2>
+
+        <div class="workout-day">
+            <h3>Day 1: Chest</h3>
+            <ul>
+                <li class="exercise"><span class="exercise-name">Barbell Bench Press</span> - <span class="sets-reps">3 sets of 8-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Dumbbell Incline Press</span> - <span class="sets-reps">3 sets of 8-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Barbell Decline Press</span> - <span class="sets-reps">3 sets of 8-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Cable Fly</span> - <span class="sets-reps">3 sets of 10-15 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Weighted Dips</span> - <span class="sets-reps">3 sets of 10-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Crunches</span> - <span class="sets-reps">3 sets of 20-30 reps</span></li>
+            </ul>
+        </div>
+
+        <div class="workout-day">
+            <h3>Day 2: Back</h3>
+            <ul>
+                <li class="exercise"><span class="exercise-name">Deadlift</span> - <span class="sets-reps">3 sets of 8-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Barbell Rows</span> - <span class="sets-reps">3 sets of 6-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Weighted Chin ups</span> - <span class="sets-reps">3 sets of 6-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Cable Rows</span> - <span class="sets-reps">3 sets of 10-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Lat Pull Downs</span> - <span class="sets-reps">3 sets of 10-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Single Arm Dumbbell Row</span> - <span class="sets-reps">3 sets of 10-12 reps</span></li>
+            </ul>
+        </div>
+
+        <div class="workout-day">
+            <h3>Day 3: Shoulder</h3>
+            <ul>
+                <li class="exercise"><span class="exercise-name">Barbell Overhead Press</span> - <span class="sets-reps">3 sets of 8-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Barbell Upright Rows</span> - <span class="sets-reps">4 sets of 10-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Cable Lateral Raises</span> - <span class="sets-reps">4 sets of 10-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Dumbbell Front Raises</span> - <span class="sets-reps">4 sets of 10-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Seated Bent Over Rear Delt Raise</span> - <span class="sets-reps">4 sets of 10-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Barbell Shrugs</span> - <span class="sets-reps">4 sets of 10-12 reps</span></li>
+            </ul>
+        </div>
+
+        <div class="workout-day">
+            <h3>Day 4: Arms</h3>
+            <ul>
+                <li class="exercise"><span class="exercise-name">Close Grip Bench Press</span> - <span class="sets-reps">4 sets of 8-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">EZ Bar Skullcrushers</span> - <span class="sets-reps">4 sets of 8-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Cable Push Downs</span> - <span class="sets-reps">4 sets of 8-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">EZ Bar Curls</span> - <span class="sets-reps">4 sets of 8-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Hammer Curls</span> - <span class="sets-reps">4 sets of 8-10 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Preacher Curl</span> - <span class="sets-reps">4 sets of 8-10 reps</span></li>
+            </ul>
+        </div>
+
+        <div class="workout-day">
+            <h3>Day 5: Legs</h3>
+            <ul>
+                <li class="exercise"><span class="exercise-name">Squats</span> - <span class="sets-reps">3 sets of 8-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Leg Press</span> - <span class="sets-reps">3 sets of 8-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Lunges</span> - <span class="sets-reps">3 sets of 8-12 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Leg Extension</span> - <span class="sets-reps">3 sets of 10-15 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Hamstring Curls</span> - <span class="sets-reps">3 sets of 10-15 reps</span></li>
+                <li class="exercise"><span class="exercise-name">Standing Calf Raises</span> - <span class="sets-reps">4 sets of 8-10 reps</span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

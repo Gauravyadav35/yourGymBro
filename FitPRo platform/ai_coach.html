@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Fitness Coach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #1e1e1e; /* Dark background */
+            --accent-start: #4285f4; /* Blue */
+            --accent-mid: #ea4335;   /* Red */
+            --accent-end: #fbbc05;   /* Yellow */
+            --text: #e0e1dd;
+            --search-bg: #2c2c2c; /* Dark search bar background */
+            --search-text: #d4d4d4;
+            --chat-bg: #252525;
+            --user-msg-bg: #383838;
+            --ai-msg-bg: #444444;
+            --chat-text: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            position: relative; /* For background video positioning */
+            overflow: hidden; /* Hide video overflow */
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Place behind other content */
+            filter: brightness(60%); /* Optional: Dim the video */
+        }
+
+        .welcome-container {
+            text-align: center;
+            margin-bottom: 30px; /* Adjust spacing */
+            z-index: 1; /* Ensure text is above video */
+        }
+
+        .welcome-text {
+            font-size: 2.5rem; /* Slightly smaller welcome text */
+            font-weight: bold;
+            background: linear-gradient(to right, var(--accent-start), var(--accent-mid), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .chatbot-container {
+            background: rgba(44, 44, 44, 0.8); /* Semi-transparent background */
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px; /* Space for the input area */
+            width: 90%;
+            max-width: 600px;
+            overflow-y: auto;
+            max-height: 400px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            color: var(--chat-text);
+            word-break: break-word;
+        }
+
+        .user-message {
+            background-color: var(--user-msg-bg);
+            align-self: flex-end;
+        }
+
+        .ai-message {
+            background-color: var(--ai-msg-bg);
+            align-self: flex-start;
+        }
+
+        .input-area {
+            position: fixed; /* Stick to the bottom */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 44, 44, 0.8); /* Semi-transparent background */
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            z-index: 2; /* Ensure input is above chat */
+        }
+
+        .chat-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: none;
+            background: transparent;
+            color: var(--search-text);
+            font-size: 1rem;
+            outline: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .chat-input::placeholder {
+            color: #777;
+        }
+
+        .send-button {
+            background: linear-gradient(to right, var(--accent-start), var(--accent-mid), var(--accent-end));
+            color: var(--primary);
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            outline: none;
+            font-weight: bold;
+        }
+
+        .send-button:hover {
+            opacity: 0.9;
+        }
+
+        .image-container {
+            margin-top: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .generated-image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Hide the original search bar */
+        .search-bar-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="video/8084614-uhd_3840_2160_25fps.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="welcome-container">
+        <h1 class="welcome-text">Aur Sherraa, fitness kesi hai....</h1>
+    </div>
+
+    <div class="chatbot-container" id="chatbot">
+        <div class="message ai-message">Hello! welcome to your gym bro AI</div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="userInput" class="chat-input" placeholder="Type your question here...">
+        <button class="send-button" onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const chatbot = document.getElementById('chatbot');
+        const userInput = document.getElementById('userInput');
+        const apiKey = 'cm9d80isb0008ie04rlp4qxq3'; // Your API key
+        const imageApiUrl = 'https://prod.api.market/api/v1/bridgeml/text-to-image/text-to-image'; // Correct API URL
+
+        function appendMessage(text, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.innerHTML = text; // Use innerHTML to render HTML
+            if (isUser) {
+                messageDiv.classList.add('user-message');
+            } else {
+                messageDiv.classList.add('ai-message');
+            }
+            chatbot.appendChild(messageDiv);
+            chatbot.scrollTop = chatbot.scrollHeight; // Scroll to the latest message
+        }
+
+        function appendImage(imageUrl) {
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('image-container');
+            const image = document.createElement('img');
+            image.src = imageUrl;
+            image.classList.add('generated-image');
+            imageContainer.appendChild(image);
+            chatbot.appendChild(imageContainer);
+            chatbot.scrollTop = chatbot.scrollHeight;
+        }
+
+        function sendMessage() {
+            const userText = userInput.value.trim();
+            if (userText) {
+                appendMessage(userText, true);
+                userInput.value = ''; // Clear the input
+
+                // Check if the user asked to generate an image
+                if (userText.toLowerCase().startsWith('generate image of')) {
+                    const imagePrompt = userText.substring('generate image of'.length).trim();
+                    generateImage(imagePrompt);
+                } else {
+                    // Simulate AI response (replace with actual AI logic)
+                    getAIResponse(userText);
+                }
+            }
+        }
+
+        function getAIResponse(userText) {
+            let response = "Hmm, what can i do for you.....";
+            const lowerUserText = userText.toLowerCase();
+
+            if (lowerUserText.includes('workout plan')) {
+                response = '<a href="workout.html" target="_blank" style="color: var(--accent-start); font-weight: bold; text-decoration: none;">Check out our general workout plans here!</a>';
+            } else if (lowerUserText.includes('diet plan')) {
+                response = '<a href="diet_plan.html" target="_blank" style="color: var(--accent-mid); font-weight: bold; text-decoration: none;">Explore our diet plan suggestions!</a>';
+            } else if (lowerUserText.includes('weight gain')) {
+                response = "<p>For weight gain advice, consider focusing on a calorie surplus and strength training. Would you like some general tips on these?</p>";
+            } else if (lowerUserText.includes('weight loss')) {
+                response = "<p>Weight loss involves a combination of diet and exercise. Consistency is key! What are your preferred types of physical activity?</p>";
+            } else if (lowerUserText.includes('biceps exercise')) {
+                response = "<p>Here are a few effective biceps exercises you can try:</p>" +
+                           "<ul>" +
+                           "  <li><strong>Barbell Curls:</strong> A classic for overall biceps development.</li>" +
+                           "  <li><strong>Dumbbell Curls:</strong> Allows for more natural wrist rotation.</li>" +
+                           "  <li><strong>Hammer Curls:</strong> Targets the brachialis and brachioradialis, adding thickness to your arms.</li>" +
+                           "  <li><strong>Concentration Curls:</strong> Helps isolate the biceps for a better peak. Remember to control the movement and focus on squeezing the biceps.</li>" +
+                           "</ul>";
+            } else if (lowerUserText.includes('tricep exercise')) {
+                response = "<p>Try these exercises to target your triceps:</p>" +
+                           "<ul>" +
+                           "  <li><strong>Close-Grip Bench Press:</strong> A compound movement that heavily involves the triceps.</li>" +
+                           "  <li><strong>Overhead Dumbbell Extensions:</strong> Effectively works the long head of the triceps.</li>" +
+                           "  <li><strong>Triceps Dips (Bodyweight or Weighted):</strong> Great for overall triceps strength.</li>" +
+                           "  <li><strong>Triceps Pushdowns (with rope or bar):</strong> Allows for a good contraction and isolation. Focus on extending fully at the elbow.</li>" +
+                           "</ul>";
+            } else if (lowerUserText.includes('shoulder exercise')) {
+                response = "<p>Here are some exercises to build strong and well-rounded shoulders:</p>" +
+                           "<ul>" +
+                           "  <li><strong>Overhead Press (Barbell or Dumbbell):</strong> A fundamental exercise for overall shoulder development.</li>" +
+                           "  <li><strong>Lateral Raises:</strong> Primarily targets the lateral (side) deltoids for width.</li>" +
+                           "  <li><strong>Front Raises:</strong> Works the anterior (front) deltoids.</li>" +
+                           "  <li><strong>Rear Delt Flyes (Dumbbell or Machine):</strong> Isolates the posterior (rear) deltoids for thickness and definition. Use controlled movements.</li>" +
+                           "</ul>";
+            } else if (lowerUserText.includes('chest exercise')) {
+                response = "<p>Build a powerful chest with these exercises:</p>" +
+                           "<ul>" +
+                           "  <li><strong>Barbell Bench Press:</strong> A compound exercise for overall chest strength and size.</li>" +
+                           "  <li><strong>Dumbbell Bench Press:</strong> Allows for a greater range of motion and can target the chest muscles more effectively.</li>" +
+                           "  <li><strong>Incline Dumbbell/Barbell Press:</strong> Focuses on the upper chest.</li>" +
+                           "  <li><strong>Decline Dumbbell/Barbell Press:</strong> Targets the lower chest. You can also include flyes (dumbbell or cable) for isolation and shaping.</li>" +
+                           "</ul>";
+            } else if (lowerUserText.includes('legs exercise')) {
+                response = "<p>Don't skip leg day! Here are some essential leg exercises:</p>" +
+                           "<ul>" +
+                           "  <li><strong>Barbell Squats:</strong> The king of leg exercises, working quads, hamstrings, and glutes.</li>" +
+                           "  <li><strong>Leg Press:</strong> A good compound alternative to squats.</li>" +
+                           "  <li><strong>Leg Extensions:</strong> Isolates the quadriceps.</li>" +
+                           "  <li><strong>Hamstring Curls (Lying or Seated):</strong> Targets the hamstrings.</li>" +
+                           "  <li><strong>Calf Raises (Standing or Seated):</strong> Works the calf muscles. Remember to use proper form and progressively increase the weight or resistance.</li>" +
+                           "</ul>";
+            } else if (lowerUserText.includes('back exercise')) {
+                response = "<p>Strengthen your back with these important exercises:</p>" +
+                           "<ul>" +
+                           "  <li><strong>Pull-ups (or Lat Pulldowns):</strong> Excellent for overall back development, targeting the lats and biceps.</li>" +
+                           "  <li><strong>Barbell Rows:</strong> A fundamental exercise for building a thick and strong back.</li>" +
+                           "  <li><strong>Dumbbell Rows:</strong> Allows for a greater range of motion and unilateral training.</li>" +
+                           "  <li><strong>Seated Cable Rows:</strong> Good for targeting the mid-back muscles.</li>" +
+                           "  <li><strong>Deadlifts:</strong> A compound exercise that works almost every muscle in the body, including the entire back. Always use proper form!</li>" +
+                           "</ul>";
+            } else if (lowerUserText.includes('hello') || lowerUserText.includes('hi')) {
+                response = "<p>Hello there! What fitness goals are you working on today?</p>";
+            } else if (lowerUserText.includes('how are you')) {
+                response = "<p>I'm doing well, ready to help you achieve your fitness aspirations!</p>";
+            }
+
+            // Simulate a slight delay for the AI response
+            setTimeout(() => {
+                appendMessage(response, false);
+            }, 800);
+        }
+
+        function generateImage(prompt) {
+            appendMessage(`Generating image of: ${prompt}...`, false);
+
+            const data = {
+                prompt: `Image for ${prompt}`,
+                height: 1024,
+                width: 1024,
+                scheduler: 'K_EULER',
+                num_outputs: 1,
+                guidance_scale: 0,
+                negative_prompt: 'worst quality, low quality',
+                num_inference_steps: 4
+            };
+
+            fetch(imageApiUrl, {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                    'x-magicapi-key': apiKey,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw err; });
+                }
+                return response.json();
+            })
+            .then(result => {
+                if (result && result.output && result.output.length > 0) {
+                    appendImage(result.output[0].url);
+                } else {
+                    appendMessage("Sorry, I couldn't generate an image for that prompt.", false);
+                }
+            })
+            .catch(error => {
+                console.error('Error generating image:', error);
+                appendMessage("There was an error generating the image.", false);
+            });
+        }
+
+        userInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

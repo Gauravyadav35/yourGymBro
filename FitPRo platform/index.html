@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Your Gym Bro | Be Your Best Version</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #ff7f50;
+            --text: #e0e1dd;
+            --glitch-color-1: #f0f;
+            --glitch-color-2: #0ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Default font */
+            background: var(--primary); /* Solid background for fallback */
+            color: var(--text);
+            overflow-x: hidden;
+            display: flex; /* Enable flexbox for body */
+            flex-direction: column; /* Stack header, subheading, and footer */
+            min-height: 100vh; /* Ensure body takes at least the full viewport height */
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .background-video video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.8), rgba(27, 38, 59, 0.8));
+            z-index: -1;
+        }
+
+        header {
+            padding: 20px;
+            animation: fadeInSlide 1s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 110px; /* Adjust as needed */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 0%; /* Remove the circle */
+            background: none; /* Remove the background color */
+            display: inline-block; /* Adjust if needed */
+            box-shadow: none; /* Remove the shadow */
+            animation: none; /* Remove the pulsing animation */
+            margin-right: 15px; /* Keep the right margin */
+            vertical-align: middle; /* Align with text */
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .sections-top-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sections-top-right a {
+            background: none;
+            color: var(--text);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .sections-top-right a:hover {
+            transform: scale(1.05);
+            color: var(--accent);
+        }
+
+        .subheading-container {
+            text-align: center;
+            padding-top: 20px; /* Reduced top padding significantly */
+            padding-bottom: 40px; /* Adjusted bottom padding */
+        }
+
+        .subheading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .subheading::before,
+        .subheading::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--text);
+            background: var(--primary);
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        .subheading::before {
+            left: 2px;
+            text-shadow: -1px 0 var(--glitch-color-1);
+            clip: rect(44px, 450px, 56px, 0);
+        }
+
+        .subheading::after {
+            left: -2px;
+            text-shadow: 1px 0 var(--glitch-color-2);
+            clip: rect(16px, 450px, 28px, 0);
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                text-shadow: none;
+                transform: translate(0, 0);
+            }
+            10% {
+                transform: translate(-5px, 5px);
+            }
+            20% {
+                clip: rect(26px, 999px, 7px, 0);
+            }
+            30% {
+                transform: translate(5px, -5px);
+            }
+            40% {
+                clip: rect(8px, 999px, 44px, 0);
+            }
+            50% {
+                transform: translate(-5px, 5px);
+            }
+            60% {
+                clip: rect(35px, 999px, 18px, 0);
+            }
+            70% {
+                transform: translate(5px, -5px);
+            }
+            80% {
+                clip: rect(11px, 999px, 35px, 0);
+            }
+            90% {
+                transform: translate(-5px, 5px);
+            }
+            100% {
+                text-shadow: none;
+                transform: translate(0, 0);
+            }
+        }
+
+        .gallery {
+            display: none; /* Remove the gallery section */
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #ccc;
+            font-size: 0.9rem;
+            background: var(--primary);
+            margin-top: auto;
+        }
+
+        /* Animations */
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseLogo {
+            from { box-shadow: 0 0 10px var(--accent); }
+            to { box-shadow: 0 0 25px #ffa07a; }
+        }
+
+        @keyframes bounceFade {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px;
+            }
+            .logo {
+                width: 60px; /* Adjust for smaller screens */
+                height: auto;
+                margin-right: 10px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .sections-top-right {
+                gap: 5px;
+            }
+            .sections-top-right a {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                border-radius: 3px;
+            }
+            .subheading-container {
+                top: 60px;
+                padding-top: 10px; /* Further reduced top padding for smaller screens */
+                padding-bottom: 30px; /* Adjusted bottom padding for smaller screens */
+            }
+            .subheading {
+                font-size: 3rem;
+            }
+        }
+
+        /* --- Wellness Hub Styles --- */
+        .wellness-hub {
+            background-color: rgba(27, 38, 59, 0.8); /* Similar to your card background */
+            padding: 40px;
+            border-radius: 15px;
+            margin: 20px auto; /* Added some margin above and below */
+            max-width: 960px; /* Adjust as needed */
+            width: 95%;
+            text-align: center;
+        }
+
+        .wellness-hub h2 {
+            color: var(--accent);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hub-description {
+            color: var(--text);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .hub-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax width */
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hub-option {
+            background-color: rgba(13, 27, 42, 0.9); /* Darker background for options */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            display: flex; /* Make hub-option a flex container */
+            flex-direction: column; /* Stack image, title, and link */
+            align-items: center; /* Center items horizontally */
+        }
+
+        .hub-option:hover {
+            transform: scale(1.03);
+        }
+
+        .hub-option img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            max-height: 180px; /* Limit image height */
+            object-fit: cover;
+            display: block;
+            margin-bottom: 10px; /* Space between image and title */
+        }
+
+        .hub-option h3 {
+            color: var(--text);
+            font-size: 1.2rem; /* Slightly larger title */
+            padding: 0 10px;
+            margin-bottom: 10px; /* Space between title and link */
+            text-align: center;
+        }
+
+        .hub-option a {
+            display: inline-block; /* Make the link behave like a block for padding */
+            color: var(--accent);
+            text-decoration: none;
+            padding: 10px 20px; /* More padding for the button */
+            text-align: center;
+            font-size: 0.9rem;
+            border-radius: 8px; /* Add button-like border-radius */
+            border: 1px solid var(--accent); /* Add a border */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-bottom: 15px; /* Space below the button */
+        }
+
+        .hub-option a:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-video">
+        <video autoplay loop muted>
+            <source src="video/5319759-uhd_3840_2160_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="overlay"></div>
+
+    <header>
+        <div class="logo-container">
+            <img src="Images/logo transparent.png" alt="Your Gym Bro Logo" class="logo">
+            <h1></h1>
+        </div>
+        <div class="sections-top-right">
+            <a href="blog.html">BLOG</a>
+            <a href="first_aid.html">CURE</a>
+            <a href="ai_coach.html">AI Coach</a>
+            <a href="bmi.html">BMI</a>
+            <a href="workout.html">WORKOUT</a>
+        </div>
+    </header>
+
+    <div class="subheading-container">
+        <h2 class="subheading" data-text="Be Your Best Version">Be Your Best Version</h2>
+    </div>
+
+    <section class="wellness-hub">
+        <h2>Explore More</h2>
+        <p class="hub-description">Discover personalized fitness and wellness resources.</p>
+        <div class="hub-options">
+            <div class="hub-option">
+                <img src="Images/ai_coach.jpeg" alt="AI Powered Coach">
+                <h3>AI Coach</h3>
+                <a href="ai_coach.html">see More</a>
+            </div>
+            <div class="hub-option">
+                <img src="Images/workout_plan.jpeg" alt="Workout Plan">
+                <h3>Workout Plan</h3>
+                <a href="workout.html">see more</a>
+            </div>
+            <div class="hub-option">
+                <img src="Images/diet_plan.jpeg" alt="Diet Plan">
+                <h3>Diet Plan</h3>
+                <a href="diet_plan.html">See more</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+    </section>
+
+    <footer>
+        &copy; 2025 Your Gym Bro. All rights reserved.
+    </footer>
+
+</body>
+</html>

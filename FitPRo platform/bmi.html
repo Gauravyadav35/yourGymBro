@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>BMI Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #ff7f50;
+            --text: #e0e1dd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary); /* Fallback for when video doesn't load */
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* For positioning overlay and content */
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2; /* Behind the overlay */
+        }
+
+        .background-video video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.8), rgba(27, 38, 59, 0.8));
+            z-index: -1; /* Behind the card and heading */
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            text-align: center;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+            z-index: 1; /* Above the overlay */
+        }
+
+        .card {
+            background: rgba(27, 38, 59, 0.95);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 100%;
+            animation: fadeInSlide 1.2s ease;
+            backdrop-filter: blur(8px);
+            z-index: 1; /* Above the overlay */
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 28px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 0.85rem;
+            background: rgba(27, 38, 59, 0.95);
+            padding: 0 8px;
+            color: var(--accent);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        input:focus + label,
+        input:not(:placeholder-shown) + label {
+            top: -12px;
+            font-size: 0.8rem;
+            color: #ffa07a;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 14px 14px 14px;
+            margin-top: 10px;
+            background: #1b2a3a;
+            color: var(--text);
+            border: 1px solid #2c3e50;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 12px var(--accent);
+            outline: none;
+        }
+
+        button {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+            animation: pulseBtn 2s ease-in-out infinite alternate;
+        }
+
+        button:hover {
+            background-color: #ffa07a;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ffa07a, 0 0 30px var(--accent);
+        }
+
+        .result {
+            margin-top: 35px;
+            background-color: rgba(27, 38, 59, 0.9);
+            padding: 20px;
+            border-radius: 18px;
+            font-size: 1.3rem;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.6s ease;
+            animation: pulseFade 2s ease-in-out infinite alternate;
+            z-index: 1; /* Above the overlay */
+        }
+
+        .result.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Animations */
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseBtn {
+            from { box-shadow: 0 0 10px var(--accent); }
+            to { box-shadow: 0 0 25px var(--accent); }
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px var(--accent); }
+            to { text-shadow: 0 0 25px var(--accent); }
+        }
+
+        @keyframes pulseFade {
+            from { box-shadow: 0 0 10px #ff7f50; }
+            to { box-shadow: 0 0 20px #ffa07a; }
+        }
+
+        @keyframes backgroundFade {
+            from { background: linear-gradient(145deg, var(--primary), var(--secondary)); }
+            to { background: linear-gradient(145deg, var(--secondary), var(--primary)); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-video">
+        <video autoplay loop muted>
+            <source src="video/5319759-uhd_3840_2160_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="overlay"></div>
+
+    <h1>💪 BMI Calculator</h1>
+
+    <div class="card">
+        <form id="bmiForm" autocomplete="off">
+            <div class="form-group">
+                <input type="number" id="age" placeholder=" " required />
+                <label for="age">Age</label>
+            </div>
+
+            <div class="form-group">
+                <input type="number" id="weight" placeholder=" " required />
+                <label for="weight">Weight (kg)</label>
+            </div>
+
+            <div class="form-group">
+                <input type="number" id="height" placeholder=" " required />
+                <label for="height">Height (cm)</label>
+            </div>
+
+            <button type="submit">Calculate BMI</button>
+        </form>
+    </div>
+
+    <div class="result" id="bmiResult"></div>
+
+    <script>
+        const form = document.getElementById('bmiForm');
+        const resultBox = document.getElementById('bmiResult');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            const age = parseInt(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (!age || age <= 0) {
+                resultBox.innerHTML = 'Please enter a valid age.';
+                resultBox.classList.add('show');
+                return;
+            }
+
+            const heightInMeters = height / 100;
+            const bmi = weight / (heightInMeters * heightInMeters);
+            const rounded = bmi.toFixed(2);
+
+            let category = '';
+            if (bmi < 18.5) category = 'Underweight';
+            else if (bmi < 24.9) category = 'Normal weight';
+            else if (bmi < 29.9) category = 'Overweight';
+            else category = 'Obese';
+
+            resultBox.innerHTML = `<strong>Your BMI is ${rounded}</strong><br>Category: ${category}<br>Age: ${age}`;
+            resultBox.classList.add('show');
+        });
+    </script>
+
+</body>
+</html>

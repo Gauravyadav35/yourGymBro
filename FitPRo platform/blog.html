@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>FitPro | Fitness Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #ff7f50;
+            --text: #e0e1dd;
+            --light-bg: #f8fcf9;
+            --dark-text: #2c3e50;
+            --link-hover: #27ae60;
+            --card-shadow: rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            margin: 0;
+            padding: 30px;
+            color: var(--text);
+        }
+
+        nav {
+            background: var(--secondary);
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            position: relative;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .page-header {
+            max-width: 1000px;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .page-header h2 {
+            margin: 0;
+            color: var(--accent);
+            font-size: 2rem;
+        }
+
+        .create-btn {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .create-btn:hover {
+            background: #ffa07a;
+        }
+
+        .blogs-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: var(--secondary);
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 0.7s ease;
+            color: var(--text);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+
+        .blog-card img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            object-fit: cover;
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .blog-card h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .blog-card p {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">FitPro</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/write">Write Blog</a></li>
+            <li><a href="/blogs">View Blogs</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h2>📝 Fitness Blogs</h2>
+        <a href="blog2.html" class="create-btn">➕ Create New Blog</a>
+    </div>
+
+    <section class="blogs-container" id="blogs-container">
+        </section>
+
+    <footer>
+        © 2025 FitPro. Stay strong, stay inspired.
+    </footer>
+
+    <script>
+        const sampleBlogs = [
+            {
+                title: "Morning Yoga for Flexibility",
+                content: "Start your day with a 15-minute yoga session. It improves posture, breath, and peace of mind.",
+                image_url: "https://source.unsplash.com/featured/?yoga"
+            },
+            {
+                title: "10 Healthy Snacks for Weight Loss",
+                content: "These snacks are delicious, low in calories, and high in nutrients.",
+                image_url: "https://source.unsplash.com/featured/?healthy-food"
+            },
+            {
+                title: "Top 5 Cardio Workouts You Can Do Anywhere",
+                content: "No gym? No problem. Burn calories with these equipment-free cardio routines.",
+                image_url: "https://source.unsplash.com/featured/?cardio"
+            },
+            {
+                title: "Strength Training for Beginners",
+                content: "Get started with basic bodyweight exercises that build lean muscle.",
+                image_url: "https://source.unsplash.com/featured/?workout"
+            },
+            {
+                title: "The Importance of Hydration",
+                content: "Drinking water boosts energy and metabolism. Here's how much you really need.",
+                image_url: "https://source.unsplash.com/featured/?water"
+            },
+            {
+                title: "Home Gym Essentials",
+                content: "Build a perfect home gym with just 5 affordable items.",
+                image_url: "https://source.unsplash.com/featured/?home-gym"
+            },
+            {
+                title: "Stretching Routine to Prevent Injuries",
+                content: "Stay injury-free by stretching before and after every workout.",
+                image_url: "https://source.unsplash.com/featured/?stretching"
+            },
+            {
+                title: "Best Post-Workout Meals",
+                content: "Refuel your body the right way with these meals rich in protein and carbs.",
+                image_url: "https://source.unsplash.com/featured/?post-workout"
+            },
+            {
+                title: "HIIT vs Steady State Cardio",
+                content: "Which burns more fat? We break down the pros and cons of both.",
+                image_url: "https://source.unsplash.com/featured/?hiit"
+            },
+            {
+                title: "Mental Benefits of Regular Exercise",
+                content: "Not just your body—your brain thrives on movement too. Learn how fitness reduces stress.",
+                image_url: "https://source.unsplash.com/featured/?fitness"
+            }
+        ];
+
+        const container = document.getElementById('blogs-container');
+
+        function loadSampleBlogs() {
+            sampleBlogs.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'blog-card';
+
+                const imageTag = post.image_url ? `<img src="${post.image_url}" alt="Blog Image" style="aspect-ratio: 16/9;" />` : '';
+
+                card.innerHTML = `
+                    ${imageTag}
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        loadSampleBlogs();
+    </script>
+
+</body>
+</html>

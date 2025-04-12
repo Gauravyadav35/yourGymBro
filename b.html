@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Text to Video API Request</title>
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  .container {
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  #response {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    white-space: pre-wrap; /* Preserve formatting */
+  }
+  .error {
+    color: red;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Text to Video API Request</h1>
+  <form id="textToVideoForm">
+    <div>
+      <label for="apiKey">X-MagicAPI-Key:</label>
+      <input type="text" id="apiKey" name="apiKey" required placeholder="YOUR_UNIQUE_API_KEY">
+    </div>
+    <div>
+      <label for="model">Model:</label>
+      <select id="model" name="model">
+        <option value="1.3b" selected>1.3b</option>
+        </select>
+    </div>
+    <div>
+      <label for="frames">Frames:</label>
+      <input type="number" id="frames" name="frames" value="81">
+    </div>
+    <div>
+      <label for="prompt">Prompt:</label>
+      <textarea id="prompt" name="prompt" rows="3">Elephants flying in sky in a group</textarea>
+    </div>
+    <div>
+      <label for="lora_url">LoRA URL:</label>
+      <input type="text" id="lora_url" name="lora_url" value="https://huggingface.co/motimalu/wan-flat-color-v2/resolve/main/wan_flat_color_v2.safetensors">
+    </div>
+    <div>
+      <label for="aspect_ratio">Aspect Ratio:</label>
+      <select id="aspect_ratio" name="aspect_ratio">
+        <option value="16:9" selected>16:9</option>
+        <option value="1:1">1:1</option>
+        <option value="9:16">9:16</option>
+        </select>
+    </div>
+    <div>
+      <label for="sample_shift">Sample Shift:</label>
+      <input type="number" id="sample_shift" name="sample_shift" value="8">
+    </div>
+    <div>
+      <label for="resolution">Resolution:</label>
+      <select id="resolution" name="resolution">
+        <option value="480p" selected>480p</option>
+        <option value="720p">720p</option>
+        </select>
+    </div>
+    <div>
+      <label for="sample_steps">Sample Steps:</label>
+      <input type="number" id="sample_steps" name="sample_steps" value="30">
+    </div>
+    <div>
+      <label for="negative_prompt">Negative Prompt:</label>
+      <textarea id="negative_prompt" name="negative_prompt" rows="2"></textarea>
+    </div>
+    <div>
+      <label for="lora_strength_clip">LoRA Strength Clip:</label>
+      <input type="number" id="lora_strength_clip" name="lora_strength_clip" value="1" step="0.1">
+    </div>
+    <div>
+      <label for="sample_guide_scale">Sample Guide Scale:</label>
+      <input type="number" id="sample_guide_scale" name="sample_guide_scale" value="5" step="0.1">
+    </div>
+    <div>
+      <label for="lora_strength_model">LoRA Strength Model:</label>
+      <input type="number" id="lora_strength_model" name="lora_strength_model" value="1" step="0.1">
+    </div>
+    <button type="submit">Generate Video</button>
+  </form>
+
+  <div id="response"></div>
+  <div id="error" class="error"></div>
+</div>
+
+<script>
+  document.getElementById('textToVideoForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const apiKey = document.getElementById('apiKey').value;
+    const model = document.getElementById('model').value;
+    const frames = parseInt(document.getElementById('frames').value);
+    const prompt = document.getElementById('prompt').value;
+    const lora_url = document.getElementById('lora_url').value;
+    const aspect_ratio = document.getElementById('aspect_ratio').value;
+    const sample_shift = parseInt(document.getElementById('sample_shift').value);
+    const resolution = document.getElementById('resolution').value;
+    const sample_steps = parseInt(document.getElementById('sample_steps').value);
+    const negative_prompt = document.getElementById('negative_prompt').value;
+    const lora_strength_clip = parseFloat(document.getElementById('lora_strength_clip').value);
+    const sample_guide_scale = parseFloat(document.getElementById('sample_guide_scale').value);
+    const lora_strength_model = parseFloat(document.getElementById('lora_strength_model').value);
+
+    const data = {
+      input: {
+        model: model,
+        frames: frames,
+        prompt: prompt,
+        lora_url: lora_url,
+        aspect_ratio: aspect_ratio,
+        sample_shift: sample_shift,
+        resolution: resolution,
+        sample_steps: sample_steps,
+        negative_prompt: negative_prompt,
+        lora_strength_clip: lora_strength_clip,
+        sample_guide_scale: sample_guide_scale,
+        lora_strength_model: lora_strength_model
+      }
+    };
+
+    fetch('https://prod.api.market/api/v1/magicapi/wan-text-to-image/text-to-video/run', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'x-magicapi-key': apiKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(err => { throw err; });
+      }
+      return response.json();
+    })
+    .then(result => {
+      document.getElementById('response').innerText = JSON.stringify(result, null, 2);
+      document.getElementById('error').innerText = '';
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      document.getElementById('error').innerText = 'Error: ' + JSON.stringify(error, null, 2);
+      document.getElementById('response').innerText = '';
+    });
+  });
+</script>
+
+</body>
+</html>

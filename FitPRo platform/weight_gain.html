@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weight Gain Diet Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #f4f4f4;
+            --secondary: #e0e0e0;
+            --accent: #FFC107; /* Changed accent color */
+            --text-primary: #333;
+            --text-secondary: #555;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(60%);
+        }
+
+        .content-wrapper {
+            width: 100%;
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        h1 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .option-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .option-buttons button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .option-buttons button.veg {
+            background-color: #8BC34A;
+            color: white;
+        }
+
+        .option-buttons button.non-veg {
+            background-color: #FF9800;
+            color: white;
+        }
+
+        .option-buttons button:hover {
+            opacity: 0.8;
+        }
+
+        .diet-plan-section {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .notes {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .common-tips {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .common-tips h2 {
+            color: var(--accent);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .common-tips ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .common-tips li {
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="C:\Users\Lenovo\OneDrive\Desktop\projects\FitPRo platform\video\8616858-hd_1920_1080_25fps.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="content-wrapper">
+        <h1>Weight Gain Diet Plan</h1>
+
+        <div class="option-buttons">
+            <button class="veg" onclick="showVegPlan()">Vegetarian</button>
+            <button class="non-veg" onclick="showNonVegPlan()">Non-Vegetarian</button>
+        </div>
+
+        <div id="vegPlan" class="diet-plan-section hidden">
+            <h2><span style="font-size: 1.2em;">🥦</span> VEGETARIAN WEIGHT GAIN DIET PLAN</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meal</th>
+                        <th>Food Items</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Early Morning</td>
+                        <td>Soaked almonds + raisins + warm water</td>
+                        <td>8 almonds + 4 raisins</td>
+                    </tr>
+                    <tr>
+                        <td>Breakfast</td>
+                        <td>Rolled oats with whole milk + banana + peanut butter<br>Paneer toast sandwich</td>
+                        <td>1/2 cup oats + 1 cup milk + 1 banana + 1 tbsp PB<br>2 multigrain toast + 50g paneer</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-Morning Snack</td>
+                        <td>Banana shake or mango shake + walnuts</td>
+                        <td>1 glass shake + 5 walnuts</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>2 multigrain rotis<br>Mixed veg curry<br>Paneer or tofu sabzi<br>Brown rice<br>Cucumber salad</td>
+                        <td>High protein + slow carbs combo</td>
+                    </tr>
+                    <tr>
+                        <td>Pre-Workout Snack</td>
+                        <td>Boiled chickpeas or sprouts salad + black coffee</td>
+                        <td>Add lemon and salt for taste</td>
+                    </tr>
+                    <tr>
+                        <td>Post-Workout</td>
+                        <td>Whey protein shake (with milk) + banana</td>
+                        <td>Quick digesting carbs & protein</td>
+                    </tr>
+                    <tr>
+                        <td>Evening Snack</td>
+                        <td>Roasted peanuts + cheese cubes + fruit juice (natural)<br>Or sweet potato with salt & pepper</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Dinner</td>
+                        <td>2 rotis + dal + veg curry + ghee</td>
+                        <td>Add paneer/tofu for more protein</td>
+                    </tr>
+                    <tr>
+                        <td>Late Night Snack</td>
+                        <td>Warm milk with honey or a spoon of peanut butter</td>
+                        <td>Optional: mix with 1 scoop casein</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="nonVegPlan" class="diet-plan-section hidden">
+            <h2><span style="font-size: 1.2em;">🍗</span> NON-VEG WEIGHT GAIN DIET PLAN</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meal</th>
+                        <th>Food Items</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Early Morning</td>
+                        <td>Almonds + dates + warm lemon water</td>
+                        <td>8 almonds + 2 dates</td>
+                    </tr>
+                    <tr>
+                        <td>Breakfast</td>
+                        <td>3 eggs (2 whole + 1 white) omelet<br>2 toast with butter<br>1 banana shake with milk</td>
+                        <td>Classic bulking breakfast</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-Morning Snack</td>
+                        <td>Chicken sandwich or boiled eggs + dry fruits</td>
+                        <td>Use grilled or shredded chicken</td>
+                    </tr>
+                    <tr>
+                        <td>Lunch</td>
+                        <td>Grilled chicken breast / fish<br>Brown rice or roti<br>Dal + sabzi + salad</td>
+                        <td>Balanced macro-rich meal</td>
+                    </tr>
+                    <tr>
+                        <td>Pre-Workout Snack</td>
+                        <td>Peanut butter toast or banana + black coffee</td>
+                        <td>Quick carb and fat fuel</td>
+                    </tr>
+                    <tr>
+                        <td>Post-Workout</td>
+                        <td>Whey protein + banana</td>
+                        <td>Protein synthesis boost</td>
+                    </tr>
+                    <tr>
+                        <td>Evening Snack</td>
+                        <td>Boiled eggs or chicken soup + almonds</td>
+                        <td>Simple and effective</td>
+                    </tr>
+                    <tr>
+                        <td>Dinner</td>
+                        <td>Chicken curry / fish fillet<br>2 rotis + mixed veg + salad</td>
+                        <td>Choose lean meats</td>
+                    </tr>
+                    <tr>
+                        <td>Late Night Snack</td>
+                        <td>Warm milk + peanut butter or paneer cubes</td>
+                        <td>Slow-digesting night protein</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="common-tips">
+            <h2><span style="font-size: 1.2em;">✅</span> Tips for Healthy Weight Gain:</h2>
+            <ul>
+                <li>🍚 Eat every 2.5–3 hours</li>
+                <li>💪 Train with progressive overload (heavy lifting)</li>
+                <li>🧈 Add ghee, nuts, avocado, peanut butter for calorie-dense nutrition</li>
+                <li>🛏 Sleep 7–8 hours to maximize muscle repair</li>
+                <li>🚰 Don’t skip hydration even when bulking</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const vegPlan = document.getElementById('vegPlan');
+        const nonVegPlan = document.getElementById('nonVegPlan');
+
+        function showVegPlan() {
+            vegPlan.classList.remove('hidden');
+            nonVegPlan.classList.add('hidden');
+        }
+
+        function showNonVegPlan() {
+            nonVegPlan.classList.remove('hidden');
+            vegPlan.classList.add('hidden');
+        }
+
+        // Show vegetarian plan by default
+        showVegPlan();
+    </script>
+</body>
+</html>

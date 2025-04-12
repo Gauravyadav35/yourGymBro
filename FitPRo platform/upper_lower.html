@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>FitPro | Upper / Lower</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #ff7f50;
+            --text: #e0e1dd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--secondary);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            white-space: pre-line; /* Preserve line breaks in the paragraph */
+        }
+
+        strong {
+            color: var(--accent);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .workout-day {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(27, 38, 59, 0.8);
+        }
+
+        .workout-day h4 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .exercise-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .exercise-table th, .exercise-table td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .exercise-table th {
+            background-color: var(--secondary);
+            color: var(--accent);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UPPER / LOWER</h1>
+        <h2>Workout Routine</h2>
+
+        <p>🏋️‍♂️ <strong>Upper / Lower Workout Split (4 Days a Week)</strong>
+        Day 1: Upper Body A
+        Day 2: Lower Body A
+        Day 3: Rest / Active Recovery
+        Day 4: Upper Body B
+        Day 5: Lower Body B
+        Day 6: Optional Cardio/Stretch
+        Day 7: Rest</p>
+
+        <h3>🔼 Day 1 – Upper Body A (Strength Focus)</h3>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Barbell Bench Press</td>
+                    <td>4</td>
+                    <td>6–8</td>
+                </tr>
+                <tr>
+                    <td>Bent-Over Barbell Row</td>
+                    <td>4</td>
+                    <td>6–8</td>
+                </tr>
+                <tr>
+                    <td>Overhead Dumbbell Press</td>
+                    <td>3</td>
+                    <td>8–10</td>
+                </tr>
+                <tr>
+                    <td>Pull-Ups or Lat Pulldowns</td>
+                    <td>3</td>
+                    <td>10–12</td>
+                </tr>
+                <tr>
+                    <td>Dumbbell Lateral Raises</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+                <tr>
+                    <td>Triceps Rope Pushdowns</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+                <tr>
+                    <td>Barbell or EZ Bar Curl</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🔽 Day 2 – Lower Body A (Strength Focus)</h3>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Barbell Back Squat</td>
+                    <td>4</td>
+                    <td>6–8</td>
+                </tr>
+                <tr>
+                    <td>Romanian Deadlifts</td>
+                    <td>4</td>
+                    <td>8–10</td>
+                </tr>
+                <tr>
+                    <td>Walking Lunges</td>
+                    <td>3</td>
+                    <td>10/leg</td>
+                </tr>
+                <tr>
+                    <td>Standing Calf Raises</td>
+                    <td>3</td>
+                    <td>15–20</td>
+                </tr>
+                <tr>
+                    <td>Seated Leg Curl Machine</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+                <tr>
+                    <td>Plank</td>
+                    <td>3</td>
+                    <td>30–60 sec</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🔼 Day 4 – Upper Body B (Hypertrophy Focus)</h3>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Incline Dumbbell Press</td>
+                    <td>4</td>
+                    <td>10–12</td>
+                </tr>
+                <tr>
+                    <td>Seated Cable Row</td>
+                    <td>4</td>
+                    <td>10–12</td>
+                </tr>
+                <tr>
+                    <td>Arnold Press</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Face Pulls (Rope)</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Dumbbell Chest Flys</td>
+                    <td>2</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Preacher Curl or Cable Curl</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+                <tr>
+                    <td>Overhead Triceps Extension</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🔽 Day 5 – Lower Body B (Hypertrophy + Conditioning)</h3>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Front Squat or Goblet Squat</td>
+                    <td>4</td>
+                    <td>10–12</td>
+                </tr>
+                <tr>
+                    <td>Leg Press</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Dumbbell Step-Ups</td>
+                    <td>3</td>
+                    <td>10/leg</td>
+                </tr>
+                <tr>
+                    <td>Kettlebell Swings</td>
+                    <td>3</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Seated Calf Raises</td>
+                    <td>4</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Bicycle Crunches</td>
+                    <td>3</td>
+                    <td>20 reps</td>
+                </tr>
+                <tr>
+                    <td>Russian Twists</td>
+                    <td>3</td>
+                    <td>20 reps</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knee Injury First Aid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #1e1e1e; /* Dark background */
+            --accent-start: #4285f4; /* Blue */
+            --accent-mid: #ea4335;   /* Red */
+            --accent-end: #fbbc05;   /* Yellow */
+            --text: #e0e1dd;
+            --heading-text: #f0f0f0;
+            --line-color: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(60%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(44, 44, 44, 0.8);
+            border-radius: 10px;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--heading-text);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--accent-start), var(--accent-mid), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            animation: pulseHeading 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseHeading {
+            from { transform: scale(1); }
+            to { transform: scale(1.03); }
+        }
+
+        h2 {
+            color: var(--heading-text);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--accent-start);
+            padding-bottom: 8px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.8s ease-out forwards 0.5s;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h3 {
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideInRight 0.8s ease-out forwards 0.7s;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            border-left: 3px solid var(--line-color);
+            padding-left: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1s;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--accent-mid);
+            font-weight: bold;
+        }
+
+        .image-container {
+            float: left;
+            margin: 20px 20px 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: zoomIn 0.7s ease-out forwards 0.4s;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+            from {
+                transform: scale(0.8);
+            }
+        }
+
+        .image-container img {
+            display: block;
+            width: 200px;
+            height: auto;
+        }
+
+        .causes-list {
+            margin-top: 40px;
+            border-top: 2px dashed var(--accent-end);
+            padding-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1.1s;
+        }
+
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+            animation: blinkWarning 1s linear infinite;
+        }
+
+        @keyframes blinkWarning {
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="video/knee injury.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="Images/knee injury.jpeg" alt="Knee Injury First Aid">
+        </div>
+
+        <h1>Knee Injury First Aid</h1>
+
+        <p>Okay, let's have a brief discussion about knee injuries, covering their common causes and general approaches to care. <span class="warning">Remember, this is for general knowledge and does not substitute professional medical advice. If you're experiencing significant or persistent knee pain or injury, consulting a doctor for a proper diagnosis and treatment plan is crucial.</span></p>
+
+        <h2>Knee Injury: A Common Issue</h2>
+        <p>Knee injuries are prevalent due to the knee joint's complexity and its role in weight-bearing and movement. They can range from mild sprains to severe ligament tears or fractures. Prompt and appropriate first aid can significantly impact recovery.</p>
+
+        <h2>Common Causes of Knee Injuries</h2>
+        <p>Knee injuries can result from various incidents, including:</p>
+
+        <h3 class="causes-list">Acute Injuries</h3>
+        <ul>
+            <li><strong>Ligament Sprains and Tears:</strong> Sudden twisting motions, direct blows, or hyperextension can damage ligaments like the ACL, PCL, MCL, and LCL.</li>
+            <li><strong>Meniscal Tears:</strong> Twisting or turning suddenly, especially with weight on the knee, can tear the menisci (cartilage pads in the knee).</li>
+            <li><strong>Fractures:</strong> Falls, direct impacts, or high-energy trauma can cause fractures of the kneecap (patella) or other bones around the knee.</li>
+            <li><strong>Dislocation:</strong> The kneecap or the entire knee joint can be forced out of place.</li>
+        </ul>
+
+        <h3>Overuse Injuries</h3>
+        <ul>
+            <li><strong>Patellofemoral Pain Syndrome (Runner's Knee):</strong> Pain around the kneecap, often due to muscle imbalances, overuse, or improper tracking of the patella.</li>
+            <li><strong>Tendinitis:</strong> Inflammation of the tendons around the knee, such as patellar tendinitis (jumper's knee) or quadriceps tendinitis.</li>
+            <li><strong>Bursitis:</strong> Inflammation of the fluid-filled sacs (bursae) around the knee joint.</li>
+        </ul>
+
+        <h2>General Approaches to First Aid and Management</h2>
+        <p>Immediate first aid is crucial for many knee injuries to reduce pain, swelling, and further damage. General management strategies include:</p>
+
+        <h3>Immediate First Aid (RICE Protocol)</h3>
+        <ul>
+            <li><strong>Rest:</strong> Avoid putting weight on the injured knee. Use crutches if necessary.</li>
+            <li><strong>Ice:</strong> Apply ice packs wrapped in a cloth for 15-20 minutes every 2-3 hours to reduce swelling and pain.</li>
+            <li><strong>Compression:</strong> Wrap the knee with a snug but not too tight elastic bandage to help control swelling.</li>
+            <li><strong>Elevation:</strong> Keep the injured knee raised above the level of your heart whenever possible.</li>
+        </ul>
+
+        <h3>Further Management</h3>
+        <ul>
+            <li><strong>Pain Relief Medications:</strong> Over-the-counter pain relievers like ibuprofen or naproxen can help manage pain and inflammation.</li>
+            <li><strong>Immobilization:</strong> Depending on the severity, a brace or splint may be used to stabilize the knee.</li>
+            <li><strong>Physical Therapy:</strong> Essential for rehabilitation, focusing on strengthening the muscles around the knee (quadriceps, hamstrings, calves), improving range of motion, and restoring stability.</li>
+            <li><strong>Medical Evaluation:</strong> It's crucial to see a doctor for a proper diagnosis, especially for significant pain, swelling, inability to bear weight, or obvious deformity.</li>
+            <li><strong>Injections:</strong> In some cases, corticosteroid injections may be used to reduce inflammation and pain.</li>
+            <li><strong>Surgery:</strong> Severe injuries like ligament tears or fractures may require surgical intervention to repair the damage.</li>
+        </ul>
+
+        <h2>Brief Discussion</h2>
+        <p>Knee injuries are common and can significantly impact mobility. Recognizing the potential causes and implementing prompt first aid, particularly the RICE protocol, is vital. However, self-care is often insufficient for more severe injuries, and professional medical evaluation is necessary to determine the extent of the damage and the appropriate treatment plan. Rehabilitation through physical therapy plays a crucial role in regaining full function and preventing future injuries.</p>
+
+        <h2>When to Seek Professional Medical Advice</h2>
+        <ul>
+            <li>Inability to bear weight on the injured knee.</li>
+            <li>Significant pain or swelling.</li>
+            <li>Obvious deformity of the knee.</li>
+            <li>Inability to fully straighten or bend the knee.</li>
+            <li>Knee instability or a feeling of "giving way."</li>
+            <li>Pain that doesn't improve with home care after a few days.</li>
+        </ul>
+
+        <p class="warning">Remember, seeking timely and appropriate medical attention is crucial for proper healing and recovery from a knee injury.</p>
+    </div>
+</body>
+</html>

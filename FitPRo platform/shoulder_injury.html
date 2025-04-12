@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shoulder Injury First Aid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #1e1e1e; /* Dark background */
+            --accent-start: #4285f4; /* Blue */
+            --accent-mid: #ea4335;   /* Red */
+            --accent-end: #fbbc05;   /* Yellow */
+            --text: #e0e1dd;
+            --heading-text: #f0f0f0;
+            --line-color: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(60%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(44, 44, 44, 0.8);
+            border-radius: 10px;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--heading-text);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--accent-start), var(--accent-mid), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            animation: pulseHeading 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseHeading {
+            from { transform: scale(1); }
+            to { transform: scale(1.03); }
+        }
+
+        h2 {
+            color: var(--heading-text);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--accent-start);
+            padding-bottom: 8px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.8s ease-out forwards 0.5s;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h3 {
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideInRight 0.8s ease-out forwards 0.7s;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            border-left: 3px solid var(--line-color);
+            padding-left: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1s;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--accent-mid);
+            font-weight: bold;
+        }
+
+        .image-container {
+            float: right;
+            margin: 20px 0 20px 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: zoomIn 0.7s ease-out forwards 0.4s;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+            from {
+                transform: scale(0.8);
+            }
+        }
+
+        .image-container img {
+            display: block;
+            width: 200px;
+            height: auto;
+        }
+
+        .causes-list {
+            margin-top: 40px;
+            border-top: 2px dashed var(--accent-end);
+            padding-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1.1s;
+        }
+
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+            animation: blinkWarning 1s linear infinite;
+        }
+
+        @keyframes blinkWarning {
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="video/shoulder injury.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="Images/shoulder injuru.jpeg" alt="Shoulder Injury First Aid">
+        </div>
+
+        <h1>Shoulder Injury First Aid</h1>
+
+        <p>Okay, let's have a brief discussion about shoulder injuries, covering their common causes and general approaches to care. <span class="warning">Remember, this is for general knowledge and does not substitute professional medical advice. If you're experiencing significant or persistent shoulder pain or injury, consulting a doctor for a proper diagnosis and treatment plan is crucial.</span></p>
+
+        <h2>Understanding Shoulder Injuries</h2>
+        <p>The shoulder is a complex and highly mobile joint, making it susceptible to a variety of injuries. These can range from minor strains to more severe dislocations or tears.</p>
+
+        <h2>Common Causes of Shoulder Injuries</h2>
+        <p>Shoulder injuries often occur due to:</p>
+
+        <h3 class="causes-list">Acute Injuries</h3>
+        <ul>
+            <li><strong>Rotator Cuff Tears:</strong> Tearing of one or more of the tendons surrounding the shoulder joint, often from sudden forceful movements, falls, or heavy lifting.</li>
+            <li><strong>Shoulder Dislocation:</strong> The head of the humerus (upper arm bone) is forced out of the shoulder socket, often due to a direct blow or a twisting injury.</li>
+            <li><strong>Fractures:</strong> Breaks in the clavicle (collarbone), humerus (upper arm bone), or scapula (shoulder blade) can occur from falls or direct impact.</li>
+            <li><strong>Labral Tears:</strong> Tearing of the labrum, the ring of cartilage that surrounds the shoulder socket, providing stability. These can occur from repetitive overhead motions or trauma.</li>
+        </ul>
+
+        <h3>Overuse Injuries</h3>
+        <ul>
+            <li><strong>Impingement Syndrome:</strong> Compression of tendons (often the rotator cuff tendons) as they pass through a narrow space beneath the acromion (outer part of the shoulder blade), leading to pain and inflammation.</li>
+            <li><strong>Bursitis:</strong> Inflammation of the fluid-filled sacs (bursae) that cushion the bones, tendons, and muscles around the shoulder joint.</li>
+            <li><strong>Tendinitis:</strong> Inflammation of the tendons, such as biceps tendinitis.</li>
+        </ul>
+
+        <h2>General Approaches to First Aid and Management</h2>
+        <p>Initial first aid aims to reduce pain, swelling, and prevent further damage. Comprehensive management depends on the specific injury.</p>
+
+        <h3>Immediate First Aid</h3>
+        <ul>
+            <li><strong>Immobilization:</strong> Stabilize the shoulder with a sling or bandage to prevent further movement.</li>
+            <li><strong>Rest:</strong> Avoid using the injured arm and shoulder.</li>
+            <li><strong>Ice:</strong> Apply ice packs wrapped in a cloth for 15-20 minutes every 2-3 hours to reduce pain and swelling.</li>
+            <li><strong>Pain Relief Medications:</strong> Over-the-counter pain relievers like ibuprofen or naproxen can help manage pain and inflammation.</li>
+        </ul>
+
+        <h3>Further Management</h3>
+        <ul>
+            <li><strong>Medical Evaluation:</strong> It's essential to see a doctor for a proper diagnosis, especially for significant pain, inability to move the arm, or obvious deformity.</li>
+            <li><strong>Physical Therapy:</strong> A crucial part of rehabilitation, focusing on restoring range of motion, strengthening the shoulder muscles (including the rotator cuff), and improving stability.</li>
+            <li><strong>Reduction (for Dislocation):</strong> A doctor will need to gently guide the dislocated bone back into the socket. This should never be attempted by someone untrained.</li>
+            <li><strong>Injections:</strong> Corticosteroid injections may be used to reduce pain and inflammation in conditions like bursitis or tendinitis.</li>
+            <li><strong>Surgery:</strong> Severe tears, fractures, or dislocations that don't respond to conservative treatment may require surgery.</li>
+        </ul>
+
+        <h2>Brief Discussion</h2>
+        <p>Shoulder injuries are common and can significantly affect daily activities and sports participation. Prompt first aid, including immobilization and ice, is important. However, accurate diagnosis by a healthcare professional is crucial to determine the extent of the injury and the most appropriate treatment plan. Rehabilitation through physical therapy is often a cornerstone of recovery, helping to restore function and prevent recurrence.</p>
+
+        <h2>When to Seek Professional Medical Advice</h2>
+        <ul>
+            <li>Severe pain or inability to move the arm.</li>
+            <li>Obvious deformity of the shoulder joint.</li>
+            <li>Numbness or tingling in the arm or hand.</li>
+            <li>Significant swelling or bruising around the shoulder.</li>
+            <li>Pain that doesn't improve with home care after a few days.</li>
+            <li>A feeling of instability or the shoulder "popping out."</li>
+        </ul>
+
+        <p class="warning">Remember, proper diagnosis and treatment are essential for a full recovery from a shoulder injury.</p>
+    </div>
+</body>
+</html>

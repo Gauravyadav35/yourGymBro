@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>FitPro | Double Split Workout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #0d1b2a;
+            --secondary: #1b263b;
+            --accent: #ff7f50;
+            --text: #e0e1dd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--secondary);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            white-space: pre-line; /* Preserve line breaks in the paragraph */
+        }
+
+        strong {
+            color: var(--accent);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .workout-day {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(27, 38, 59, 0.8);
+        }
+
+        .workout-day h4 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .exercise-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .exercise-table th, .exercise-table td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .exercise-table th {
+            background-color: var(--secondary);
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .am-pm-heading {
+            color: var(--text);
+            font-style: italic;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DOUBLE SPLIT</h1>
+        <h2>Workout Plan</h2>
+
+        <p>💥 <strong>Double Split Weekly Routine (Twice a Day Plan)</strong>
+        Day 1: Push – Chest + Shoulders / Triceps + Abs
+        Day 2: Pull – Back / Biceps + Rear Delts
+        Day 3: Legs – Quads / Hamstrings + Calves
+        Day 4: Push (variation) / Triceps Isolation
+        Day 5: Pull (variation) / Biceps Isolation + Core
+        Day 6: Full Body Power or Weak Point / Light Cardio + Mobility
+        Day 7: REST / REST</p>
+
+        <h3>🏋️‍♂️ Day 1 – Push (Chest/Shoulders & Triceps)</h3>
+        <h4 class="am-pm-heading">AM (Chest + Shoulders):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Barbell Bench Press</td>
+                    <td>4</td>
+                    <td>6–8</td>
+                </tr>
+                <tr>
+                    <td>Seated Dumbbell Press</td>
+                    <td>3</td>
+                    <td>8–10</td>
+                </tr>
+                <tr>
+                    <td>Incline Dumbbell Press</td>
+                    <td>3</td>
+                    <td>10–12</td>
+                </tr>
+                <tr>
+                    <td>Dumbbell Lateral Raises</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+                <tr>
+                    <td>Cable Chest Fly</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="am-pm-heading">PM (Triceps + Abs):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Triceps Rope Pushdown</td>
+                    <td>3</td>
+                    <td>12–15</td>
+                </tr>
+                <tr>
+                    <td>Overhead Dumbbell Ext.</td>
+                    <td>3</td>
+                    <td>10–12</td>
+                </tr>
+                <tr>
+                    <td>Skull Crushers (EZ Bar)</td>
+                    <td>3</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Hanging Leg Raises</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Decline Crunches</td>
+                    <td>3</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🏋️‍♂️ Day 2 – Pull (Back & Biceps)</h3>
+        <h4 class="am-pm-heading">AM (Back):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Deadlifts</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Barbell Rows</td>
+                    <td>3</td>
+                    <td>6–8</td>
+                </tr>
+                <tr>
+                    <td>Pull-Ups / Lat Pulldowns</td>
+                    <td>3</td>
+                    <td>8–10</td>
+                </tr>
+                <tr>
+                    <td>Seated Cable Rows</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="am-pm-heading">PM (Biceps + Rear Delts):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dumbbell Curls</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Hammer Curls</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Concentration Curls</td>
+                    <td>3</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Face Pulls</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Reverse Pec Deck</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🦵 Day 3 – Legs (Quads & Hamstrings)</h3>
+        <h4 class="am-pm-heading">AM (Quads):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Back Squats</td>
+                    <td>4</td>
+                    <td>6–8</td>
+                </tr>
+                <tr>
+                    <td>Leg Press</td>
+                    <td>3</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Bulgarian Split Squats</td>
+                    <td>3</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Leg Extensions</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="am-pm-heading">PM (Hamstrings + Calves):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Romanian Deadlifts</td>
+                    <td>3</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Seated Leg Curls</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Standing Calf Raises</td>
+                    <td>4</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Seated Calf Raises</td>
+                    <td>3</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🔁 Day 4 – Push Isolation</h3>
+        <h4 class="am-pm-heading">AM (Chest/Shoulder Volume):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Incline Machine Press</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Machine Shoulder Press</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Cable Lateral Raise</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="am-pm-heading">PM (Triceps Isolation):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cable Kickbacks</td>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Rope Overhead Extensions</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Dips</td>
+                    <td>3</td>
+                    <td>Max</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🔁 Day 5 – Pull Isolation</h3>
+        <h4 class="am-pm-heading">AM (Back Focused Machines):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lat Pullover Machine</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Chest-Supported Row</td>
+                    <td>3</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>One-Arm Cable Row</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="am-pm-heading">PM (Biceps + Core):</h4>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Barbell Curl</td>
+                    <td>3</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Incline Dumbbell Curl</td>
+                    <td>3</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Cable Crunches</td>
+                    <td>3</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Russian Twists</td>
+                    <td>3</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>💥 Day 6 – Full Body / Weak Points + Cardio</h3>
+        <h4 class="am-pm-heading">AM (Power Circuit or Weak Muscle Focus):</h4>
+        <p><strong>Example Circuit (Pick 3–5):</strong></p>
+        <table class="exercise-table">
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Sets</th>
+                    <th>Reps</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Front Squats</td>
+                    <td>3</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Incline DB Press</td>
+                    <td>3</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Pull-Ups</td>
+                    <td>3</td>
+                    <td>Max</td>
+                </tr>
+                <tr>
+                    <td>Kettlebell Swings</td>
+                    <td>3</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="am-pm-heading">PM (Light Cardio + Recovery):</h4>
+        <p>20–30 min treadmill walk or cycling<br>Foam rolling + deep stretching</p>
+
+        <h3>🛌 Day 7 – REST</h3>
+        <p>Sleep, hydrate, recover.</p>
+    </div>
+</body>
+</html>

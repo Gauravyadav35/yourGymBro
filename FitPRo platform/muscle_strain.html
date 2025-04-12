@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muscle Strain First Aid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #1e1e1e; /* Dark background */
+            --accent-start: #4285f4; /* Blue */
+            --accent-mid: #ea4335;   /* Red */
+            --accent-end: #fbbc05;   /* Yellow */
+            --text: #e0e1dd;
+            --heading-text: #f0f0f0;
+            --line-color: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(60%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(44, 44, 44, 0.8);
+            border-radius: 10px;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: var(--heading-text);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 3rem;
+            background: linear-gradient(to right, var(--accent-start), var(--accent-mid), var(--accent-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            animation: pulseHeading 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseHeading {
+            from { transform: scale(1); }
+            to { transform: scale(1.03); }
+        }
+
+        h2 {
+            color: var(--heading-text);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--accent-start);
+            padding-bottom: 8px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.8s ease-out forwards 0.5s;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h3 {
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideInRight 0.8s ease-out forwards 0.7s;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            border-left: 3px solid var(--line-color);
+            padding-left: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1s;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--accent-mid);
+            font-weight: bold;
+        }
+
+        .image-container {
+            float: left;
+            margin: 20px 20px 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: zoomIn 0.7s ease-out forwards 0.4s;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+            from {
+                transform: scale(0.8);
+            }
+        }
+
+        .image-container img {
+            display: block;
+            width: 200px;
+            height: auto;
+        }
+
+        .acute-causes, .chronic-causes, .symptoms-list, .treatment-list, .important-considerations {
+            margin-top: 30px;
+            border-top: 2px dashed var(--accent-end);
+            padding-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards 1.1s;
+        }
+
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+            animation: blinkWarning 1s linear infinite;
+        }
+
+        @keyframes blinkWarning {
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted class="background-video">
+        <source src="video/muscle strain.mp4" video/mp4">
+    </video>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="Images/muscle strain.jpeg" alt="Muscle Strain First Aid">
+        </div>
+
+        <h1>Muscle Strain First Aid</h1>
+
+        <p>This page provides information on the causes, symptoms, and treatment of muscle strains. <span class="warning">Remember, this information is for general knowledge and does not substitute professional medical advice. If you suspect a muscle strain, especially if it's severe, please consult a healthcare professional for proper diagnosis and management.</span></p>
+
+        <h2>Causes of Muscle Strain</h2>
+
+        <h3 class="acute-causes">Acute Strains</h3>
+        <p>Often caused by a single, sudden event such as:</p>
+        <ul>
+            <li>Lifting heavy objects improperly.</li>
+            <li>Sudden twisting or jerking movements.</li>
+            <li>Slipping or falling.</li>
+            <li>Running, jumping, or throwing.</li>
+            <li>Direct blow to the muscle.</li>
+        </ul>
+
+        <h3 class="chronic-causes">Chronic Strains</h3>
+        <p>Develop gradually due to repetitive overuse of muscles, such as:</p>
+        <ul>
+            <li>Repetitive motions at work or during sports.</li>
+            <li>Poor posture.</li>
+            <li>Lack of warm-up before exercise.</li>
+            <li>Inadequate flexibility.</li>
+            <li>Overtraining without sufficient rest.</li>
+        </ul>
+
+        <h2>Symptoms of Muscle Strain</h2>
+        <p>Symptoms can vary depending on the severity of the strain (graded from mild to severe) but often include:</p>
+        <ul class="symptoms-list">
+            <li>Pain and tenderness in the affected muscle.</li>
+            <li>Swelling.</li>
+            <li>Bruising or discoloration.</li>
+            <li>Muscle spasms.</li>
+            <li>Stiffness and limited range of motion.</li>
+            <li>Weakness in the muscle.</li>
+            <li>A "popping" or "snapping" sensation at the time of injury (in severe cases).</li>
+            <li>A visible gap or dent in the muscle (in severe tears).</li>
+        </ul>
+
+        <h2>Cure/Treatment of Muscle Strain</h2>
+        <p>The primary goals of treatment are to reduce pain and swelling, promote healing, and restore full function of the muscle. The approach depends on the severity of the strain.</p>
+
+        <h3 class="treatment-list">Immediate Self-Care (R.I.C.E.)</h3>
+        <ul>
+            <li><strong>Rest:</strong> Avoid using the injured muscle. Depending on the severity, this might mean taking a break from sports, work, or daily activities that aggravate the pain. However, prolonged rest can lead to muscle weakness, so gradual, gentle movement should be reintroduced as pain subsides.</li>
+            <li><strong>Ice:</strong> Apply ice packs wrapped in a cloth to the injured area for 15-20 minutes every 2-3 hours for the first 2-3 days to help reduce pain, swelling, and bruising.</li>
+            <li><strong>Compression:</strong> Wrap the injured area with an elastic bandage to help reduce swelling. Ensure the bandage is not too tight, as this can impede circulation.</li>
+            <li><strong>Elevation:</strong> Keep the injured area raised above the level of your heart whenever possible to help drain excess fluid and reduce swelling.</li>
+        </ul>
+
+        <h3>Pain Relief</h3>
+        <ul>
+            <li><strong>Over-the-counter medications:</strong> Non-steroidal anti-inflammatory drugs (NSAIDs) like ibuprofen (Advil, Motrin) or naproxen (Aleve) can help reduce pain and inflammation. Acetaminophen (Tylenol) can help with pain but has less effect on inflammation.</li>
+        </ul>
+
+        <h3>Later Stage Treatment and Rehabilitation</h3>
+        <ul>
+            <li><strong>Heat therapy:</strong> After the initial swelling subsides (usually after 2-3 days), applying heat (warm compresses, hot showers) can help relax muscles, increase blood flow, and promote healing.</li>
+            <li><strong>Stretching and strengthening exercises:</strong> Once pain decreases, gentle stretching exercises can help restore flexibility and range of motion. As healing progresses, specific strengthening exercises can help rebuild muscle strength and prevent re-injury. A physical therapist can provide guidance on appropriate exercises.</li>
+            <li><strong>Physical therapy:</strong> For more severe strains or if recovery is slow, a physical therapist can develop a tailored rehabilitation program that includes manual therapy, therapeutic exercises, and guidance on returning to activity.</li>
+            <li><strong>Immobilization:</strong> In some severe cases, the doctor may recommend a brace, splint, or cast to immobilize the injured muscle and allow it to heal properly.</li>
+            <li><strong>Surgery:</strong> In rare cases of complete muscle tears or tendon ruptures, surgery may be necessary to repair the damaged tissue.</li>
+        </ul>
+
+        <h2 class="important-considerations">Important Considerations</h2>
+        <ul>
+            <li><strong>Avoid activities that cause pain:</strong> It's crucial not to push yourself too hard during recovery, as this can lead to re-injury and prolong the healing process.</li>
+            <li><strong>Gradual return to activity:</strong> Slowly increase the intensity and duration of activity as your pain decreases and strength improves.</li>
+            <li><strong>Listen to your body:</strong> If you experience pain during activity, stop and rest.</li>
+            <li><strong>Prevention:</strong> Regular stretching, proper warm-up before exercise, using correct lifting techniques, maintaining good posture, and avoiding overexertion can help prevent muscle strains.</li>
+        </ul>
+
+        <p>The healing time for a muscle strain varies depending on the severity of the injury. Mild strains may heal within a few weeks, while more severe strains can take several months. It's important to follow the recommended treatment plan and allow adequate time for the muscle to heal fully to prevent chronic problems or re-injury. If pain is severe, doesn't improve with home care, or if you have difficulty moving the affected area, it's important to seek medical advice.</p>
+    </div>
+</body>
+</html>

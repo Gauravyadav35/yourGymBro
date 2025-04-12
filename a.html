@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const url = 'https://prod.api.market/api/v1/bridgeml/text-to-image/text-to-image';
+
+        const data = {
+            prompt: 'Image for barbel press shoukder exercise',
+            height: 1024,
+            width: 1024,
+            scheduler: 'K_EULER',
+            num_outputs: 1,
+            guidance_scale: 0,
+            negative_prompt: 'worst quality, low quality',
+            num_inference_steps: 4
+        };
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'x-magicapi-key': 'cm9d80isb0008ie04rlp4qxq3',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(json => console.log('Image generation response:', json))
+            .catch(err => console.error('Error during image generation:', err));
+
+    </script>
+</body>
+
+</html>
